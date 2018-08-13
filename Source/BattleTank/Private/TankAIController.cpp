@@ -18,7 +18,7 @@ void ATankAIController::SetPawn(APawn * InPawn)
 	if (InPawn)
 	{
 		auto possessedTank = Cast<ATank>(InPawn);
-		if (!ensure(possessedTank)){return;}
+		if (!possessedTank){return;}
 
 		//subscribe local method to tank's death event
 		possessedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossessedTankDeath);
@@ -29,7 +29,8 @@ void ATankAIController::SetPawn(APawn * InPawn)
 void ATankAIController::OnPossessedTankDeath()
 {
 	if (!GetPawn()) { return; }
-	GetControlledPawn()->DetachFromControllerPendingDestroy();
+	//GetControlledPawn()->DetachFromControllerPendingDestroy();
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
 
 // Called every frame

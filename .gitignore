@@ -61,3 +61,4 @@ DerivedDataCache/*
 
 # Starter Content
 Content/StarterContent
+*.opendb
